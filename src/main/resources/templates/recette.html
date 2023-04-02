@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../static/style/style.css" data-th-href="@{/style/style.css}"/>
+    <title>Mon Blog de Recettes</title>
+</head>
+<body>
+<header id="header">
+    <a href="index.html"><h1 id="titreBlog">Mon Blog de Recettes</h1></a>
+    <div style="width:300px;margin:20px auto;">Bienvenue sur mon blog de
+        recettes</div>
+    <div id="loginBar">
+        <div class="login">
+            <a class="primaryBtn login"
+               href="inscription.html" data-th-href="@{/inscription}">Inscription</a>
+        </div>
+    </div>
+</header>
+<div id="global">
+    <article>
+        <div>
+            <img class="imgRecette"  alt="Tartiflette" data-th-alt="${recette.titre}" width="300px" height="242px" data-th-src="@{'/style/img/' + ${recette.photo}}"/>
+
+            <h1 class="titreRecette" data-th-text="${recette.titre}">
+                Tartiflette
+            </h1>
+            <time data-th-text="${#dates.format(recette.dateCreation, 'dd MMMM yyyy')}">
+                13/11/2022
+            </time>
+        </div>
+        <p data-th-text="${recette.description}">
+            La tartiflette savoyarde est un gratin de pommes de terre avec
+            du Reblochon fondu dessus
+        </p>
+        <div>
+            <h2 id="titreIngredient">
+                Ingrédients
+            </h2>
+            <ul>
+                    <li data-th-each="ingredient:${recette.ingredients}">
+                        <span data-th-text="${ingredient.quantite}"></span>
+                        <span data-th-text="${ingredient.unit}"></span>
+
+                        <span data-th-text="${ingredient.nom}"></span>
+
+
+                    </li>
+            </ul>
+        </div>
+    </article>
+</div>
+<footer id="piedBlog">
+    Blog réalisé par …
+</footer>
+</body>
+</html>

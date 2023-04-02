@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../static/style/style.css" data-th-href="@{/style/style.css}"/>
+    <title>Mon Blog de Recettes</title>
+</head>
+    <body>
+    <header id="header">
+        <a href="index.html"><h1 id="titreBlog">Mon Blog de Recettes</h1></a>
+        <div style="width:300px;margin:20px auto;">Bienvenue sur mon blog de
+            recettes</div>
+        <div id="loginBar">
+            <div class="login">
+                <a class="primaryBtn login"
+                   href="inscription.html">Inscription</a>
+            </div>
+        </div>
+    </header>
+    <div id="global">
+        <h1>Inscription</h1>
+        <div id="inscription">
+            <form method="post" action="inscription.html" data-th-action="@{/inscription}" data-th-object="${membre}" >
+                <input id="nom" data-th-field="*{nom}" name="nom" type="text" class="inputChamp" placeholder="Votre nom *" />
+                <span data-th-if="${#fields.hasErrors('nom')}" data-th-errors="*{nom}"></span><br />
+                <input id="pseudo" data-th-field="*{pseudo}" name="pseudo" type="text" class="inputChamp" placeholder="Votre pseudo *" />
+                <span data-th-if="${#fields.hasErrors('pseudo')}" data-th-errors="*{pseudo}"></span><br />
+                <input id="email" data-th-field="*{email}" name="email" type="text" class="inputChamp" placeholder="Votre email *" />
+                <span data-th-if="${#fields.hasErrors('email')}" data-th-errors="*{email}"></span><br />
+                <input id="password" data-th-field="*{password}" name="password" type="password" class="inputChamp" placeholder="Votre mot de passe *" />
+                <span data-th-if="${#fields.hasErrors('password')}" data-th-errors="*{password}"></span><br />
+                <br />
+                <input type="submit" value="Je 'm'inscris" class="submitBtn" />
+                <div id="erreur" data-th-if="${#fields.hasAnyErrors()}">
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer id="piedBlog">
+        Blog réalisé par …
+    </footer>
+</body>
+</html>
